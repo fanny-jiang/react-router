@@ -8,8 +8,9 @@ import Album from '../react/components/Album';
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={AppContainer}>
-      <Route path="/albums" component={Albums} />
       <IndexRedirect to="/albums" />
+      <Route path="/albums" component={Albums} />
+      <Route path="albums/:albumId" component={Album} />
     </Route>
   </Router>
 ), document.getElementById('app'));
