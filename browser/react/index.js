@@ -11,13 +11,13 @@ import Songs from '../react/components/Songs';
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={AppContainer}>
-      <IndexRedirect to="/albums" />
-      <Route path="/albums" component={Albums} />
+      <IndexRedirect to="albums" />
+      <Route path="albums" component={Albums} />
       <Route path="albums/:albumId" component={Album} />
-      <Route path="/artists" component={Artists} />
-      <Route path="/artists/:artistId" component={Artist}>
-        <Route path="/artists/:artistId/albums" component={Albums} />
-        <Route path="/artists/:artistId/songs" component={Songs} />
+      <Route path="artists" component={Artists} />
+      <Route path="artists/:artistId" component={Artist}>
+        <Route path="albums" component={Albums} />
+        <Route path="songs" component={Songs} />
       </Route>
     </Route>
   </Router>
