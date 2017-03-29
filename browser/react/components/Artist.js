@@ -30,8 +30,7 @@ export default class Artist extends React.Component {
         <div className="row">
         {
           artistAlbums.map(album => (
-            <div className="col-xs-4" key={ album.id }>
-            {album.songs.map( song => artistSongs.push(song))}
+            <div className="col-xs-4" key={ album.id } id = {album.songs.map( song => artistSongs.push(song))}>
                 <Link className="thumbnail" to={'/albums/' + album.id}>
                   <img src={ album.imageUrl } />
                   <div className="caption">
