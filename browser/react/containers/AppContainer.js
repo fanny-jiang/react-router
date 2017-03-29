@@ -55,7 +55,8 @@ export default class AppContainer extends Component {
 
  onLoadSelectArtist (albums) {
     this.setState({
-      artistAlbums: albums
+      artistAlbums: albums,
+      selectedArtist: albums[0].artists[0].name
     });
   }
 
@@ -151,7 +152,8 @@ export default class AppContainer extends Component {
 
             // Artist (singular)
             selectArtistAlbums: this.selectArtistAlbums,
-            artistAlbums: this.state.artistAlbums
+            artistAlbums: this.state.artistAlbums,
+            selectedArtist: this.state.selectedArtist
           })
                 : null
         }
