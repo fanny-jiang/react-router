@@ -18,29 +18,33 @@ export default class Artist extends React.Component {
   render() {
     const artistAlbums = this.props.artistAlbums;
     const selectedArtist = this.props.selectedArtist;
-    const artistId = this.props.artistId;
+    const artistId = this.props.routeParams.artistId;
     const currentSong = this.props.currentSong;
     const isPlaying = this.props.isPlaying;
     const toggleOne = this.props.toggleOne;
     let artistSongs = [];
+    if (artistAlbums) {
+      artistAlbums.map((album) =>
+        album.songs.map(song => artistSongs.push(song)))
+    }
 
     const children = this.props.children;
     const propsToPassToChildren = {
-      artistAlbums: artistAlbums,
+      albums: artistAlbums,
       selectedArtist: selectedArtist,
       artistId: artistId,
       currentSong: currentSong,
       isPlaying: isPlaying,
       toggleOne: toggleOne,
-      artistSongs: artistSongs
+      songs: artistSongs
     };
 
     return (
       <div className="artist">
         <h3>{selectedArtist}</h3>
         <ul className="nav nav-tabs">
-          <li><Link to={`artists/${artistId}/albums`}>ALBUMS</Link></li>
-          <li><Link to={'#'}>SONGS</Link></li>
+          <li><Link to={`/artists/${artistId}/albums`}>ALBUMS</Link></li>
+          <li><Link to={`/artists/${artistId}/songs`}>SONGS</Link></li>
         </ul>
         { children && React.cloneElement(children, propsToPassToChildren) }
       </div>
